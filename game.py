@@ -10,7 +10,7 @@ points = 0
 words = 0
 
 # Characters
-characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+characters = list('abcdefghijklmnopqrstuvwxyz')
 
 # Generate 12 random numbers between 0 and the length of characters using 'random'
 list_numbers = [random.randint(0, len(characters) - 1) for _ in range(12)]
@@ -41,11 +41,16 @@ def timer():
 
 # Function to validate that the letters in the word are contained in the list_characters variable
 def validate(word):
-    # TODO - make sure that the character isn't being used multiple times.
-    # TODO - make sure that the word is a real word.
-    # TODO - make it so that you must have atleast a 3 letter word.
+    if len(word) < 3:  # Ensure the word is at least 3 letters long
+        return False
+    # TODO - make sure that the word used is a real word
+    # Make copy of list_characters
+    temp_characters = list_characters.copy()
     for char in word:
-        if char not in list_characters:
+        if char in temp_characters:
+            # Remove character from copy of list_characters
+            temp_characters.remove(char)
+        else:
             return False
     return True
 
@@ -66,6 +71,7 @@ def addCharacters():
 # Function to add points (requires global statement to modify global points)
 def addPoints(word):
     global points
+    # Different letters could have different values, but for simplicity, let's give each letter 10 points
     # TODO - give different letters, different values?
     points += len(word) * 10
 
