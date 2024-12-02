@@ -12,3 +12,5 @@ As you spell the words, you earn points, but more importantly, you earn extra se
 At the end of the game, your points and the number of words you entered will be displayed on the screen.
 
 The challenge is to beat your own personal best!
+
+Run `python3 gameClass.py` to start the game using a class/object based method.
